@@ -42,9 +42,10 @@
      } 
      else { 
         // Reload maps to refresh coords
+        rminitialize();
         svinitialize();
         mminitialize();
-        rminitialize();
+   
         guessMode.initGuess();
 		}
    });
@@ -61,7 +62,7 @@
    function calcGuessPoints(guessLatLng) {
      // Calculate distance between points, and convert to kilometers
      distance = Math.ceil(google.maps.geometry.spherical.computeDistanceBetween(window.locLL,guessLatLng)/1000);
- 	  points = 20000/(1+distance);
+ 	  points = Math.ceil(Math.max(9000-1000*Math.log(distance),0));
    }
 
    function endRound() {
@@ -75,7 +76,7 @@
 
      // If distance is null, that means they ran out of time and didn't click the guess button
      if(distance === null) {
-       $('#roundEnd').html('<p>Dang nabbit! You took too long!.<br/> You didn\'t score any points this round!<br/><br/><button class="btn btn-primary closeBtn" type="button">Continue</button></p></p>');
+       $('#roundEnd').html('<p>Dang nabbit! You took too long!.<br/> You didn\'t score any points this round!<br/><div id="roundMap"></div><br/><button class="btn btn-primary closeBtn" type="button">Continue</button></p></p>');
        $('#roundEnd').fadeIn();
      } else {
        $('#roundEnd').html('<p>Your guess was<br/><strong><h1>' + distance + '</strong>km</h1> away from the actual location.<br/><div id="roundMap"></div><br/> You have scored<br/><h1>' + roundScore + ' points</h1> this round!<br/><br/><button class="btn btn-primary closeBtn" type="button">Continue</button></p></p>');

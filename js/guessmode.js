@@ -33,7 +33,7 @@ var guessMode = (function () {
 	   $('#guessButton').click(function() {
    		onGuessButtonClicked();
    	});
-      window.guessLatLng = '';
+      window.guessLatLng = null;
 		guessTimeLeftMs = guessTimeLimitMs;
 		guessTimer = setInterval(onGuessTimer, guessTimeRefreshRateMs);
 	}
