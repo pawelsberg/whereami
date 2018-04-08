@@ -19,11 +19,11 @@ function mminitialize() {
 
   // Marker selection setup
   var guessMarkerOptions = new google.maps.Marker({
-      map: mMap,
-      visible: true,
-      title: 'Your guess',
-      draggable: false
-      //icon: '/img/googleMapsMarkers/red_MarkerB.png'
+    map: mMap,
+    visible: true,
+    title: 'Your guess',
+    draggable: false
+    //icon: '/img/googleMapsMarkers/red_MarkerB.png'
   });
 
   // Mini map marker setup
@@ -37,7 +37,7 @@ function mminitialize() {
   };
 
   // Mini map click
-  google.maps.event.addListener(mMap, 'click', function(event) {
+  google.maps.event.addListener(mMap, 'click', function (event) {
     window.guessLatLng = event.latLng;
     setGuessMarker(window.guessLatLng);
   });
