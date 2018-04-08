@@ -47,6 +47,8 @@
         mminitialize();
    
         guessMode.initGuess();
+        round++;
+        $('.round').html('Current Round: <b>' + round + '/5</b>');
 		}
    });
 
@@ -66,11 +68,11 @@
    }
 
    function endRound() {
-     round++;
+
      roundScore = points;
      totalScore = totalScore + points;
 
-     $('.round').html('Current Round: <b>' + round + '/5</b>');
+
      $('.roundScore').html('Last Round Score: <b>' + roundScore + '</b>');
      $('.totalScore').html('Total Score: <b>' + totalScore + '</b>');
 
@@ -87,7 +89,7 @@
    }
 
    function endGame() {
-     $('#miniMap, #pano, #guessButton, #scoreBoard').hide();
+     $('#miniMap, #pano, #guessButton, #scoreBoard, #timer').hide();
      $('#endGame').html('<h1>Congrats!</h1><h2>Your final score was:</h2><h1>' + totalScore + '!</h1><br/>Share this on:<br/><br/><a class="btn" href="http://www.facebook.com/sharer.php?s=100&p[title]=' + encodeURIComponent('Whereami') + '&p[summary]=' + encodeURIComponent('I just scored ' + totalScore + ' playing Whereami!') + '&p[url]=' + encodeURIComponent('https://github.com/webdevbrian/whereami') + '" target="_blank">Facebook</a> <a class="btn" href="https://twitter.com/intent/tweet?text=I+just+scored+' + totalScore + '+playing+whereami+by+@phrozen755,+based+off+of+geoguessr%21&url=https://github.com/webdevbrian/whereami" target="_blank">Twitter</a></p><br/><button class="btn btn-large btn-success playAgain" type="button">Play Again?</button>');
      $('#endGame').fadeIn(500);
 

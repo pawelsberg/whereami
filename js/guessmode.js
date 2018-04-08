@@ -19,8 +19,8 @@ var guessMode = (function () {
 	function endGuess(inTime,guessLatLng)
 	{
 		$("#guessButton").off("click");
-      displayTimeLeft();       
-      clearInterval(guessTimer);
+        displayTimeLeft();       
+		clearInterval(guessTimer);
 		myObject.onGuessEnded(inTime,guessLatLng);	
 	}
 	
@@ -30,12 +30,14 @@ var guessMode = (function () {
 
 	myObject.initGuess = function() {
 		// Guess Button
-	   $('#guessButton').click(function() {
-   		onGuessButtonClicked();
-   	});
-      window.guessLatLng = null;
+	   	$('#guessButton').click(function() {
+   			onGuessButtonClicked();
+   		});
+      	window.guessLatLng = null;
 		guessTimeLeftMs = guessTimeLimitMs;
 		guessTimer = setInterval(onGuessTimer, guessTimeRefreshRateMs);
+		$('#timer').fadeIn();
+
 	}
 
 	function onGuessTimer(){
