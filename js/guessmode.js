@@ -35,6 +35,7 @@ var guessMode = (function () {
    		});
       	window.guessLatLng = null;
 		guessTimeLeftMs = guessTimeLimitMs;
+		displayTimeLeft();
 		guessTimer = setInterval(onGuessTimer, guessTimeRefreshRateMs);
 		$('#timer').fadeIn();
 
